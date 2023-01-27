@@ -120,9 +120,30 @@ Will write all above things in Deployment.yaml of MongoExpress
 
 20.B Path_till_File>Kubectl apply -f mongo-express.yaml 
 
-21. Assigning External IP for External Service
+### Assigning External IP for External Service.Below command is also used to Start MongoExpress
 
->minikube service mongo-express-service
+21. minikube service mongo-express-service
+
+### Namespaces 
+22. kubectl get namespace
+
+### Cluster Info 
+23.kubectl cluster-info
+
+### Create Namespaces 
+24.kubectl create namespace my-namespace
+
+### To get list of resources which are not bound namespace 
+25. kubectl api-resources --namespaced=false
+
+### To get list of resources which are bound to namespace 
+26. kubectl api-resources --namespaced=true
+
+### Creating namespace when you use apply
+27. kubectl apply -f mysql-configmap.yaml --namespace=my-namespace
+
+### GET using Namepace 
+28. kubectl get configmap -n my-namespace 
 
 
 
