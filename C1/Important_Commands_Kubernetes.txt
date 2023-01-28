@@ -133,7 +133,7 @@ Will write all above things in Deployment.yaml of MongoExpress
 ### Create Namespaces 
 24.kubectl create namespace my-namespace
 
-### To get list of resources which are not bound namespace 
+### To get list of resources which are not bound to namespace 
 25. kubectl api-resources --namespaced=false
 
 ### To get list of resources which are bound to namespace 
@@ -143,7 +143,96 @@ Will write all above things in Deployment.yaml of MongoExpress
 27. kubectl apply -f mysql-configmap.yaml --namespace=my-namespace
 
 ### GET using Namepace 
-28. kubectl get configmap -n my-namespace 
+28. kubectl get configmap -n my-namespace
+
+### Kubectx or kubens Installation
+https://github.com/ahmetb/kubectx#installation 
+
+kubectx is a tool to switch between contexts (clusters) on kubectl faster.
+kubens is a tool to switch between Kubernetes namespaces (and configure them for kubectl) easily.
+
+Will install using chocolatey
+C:\ProgramData\chocolatey - Add that in Env variable.
+
+>choco install kubens kubectx
+
+### Change Active Namespace
+29. kubens my-namespace
+
+#### INGRESS
+
+#### How to configure ingress in your kubernetes cluster 
+- You can't directly run Ingress.yaml
+- You will have to install Ingress Controller 
+
+#### Installation of Ingress Controller in Minikube
+30. minikube addons enable ingress 
+31. minikube tunnel
+
+
+#### To check whether above Ingress controller is installed or not 
+> kubectl get pod -n kube-system 
+
+If it is not in above ns 
+
+> kubectl get pod -n ingress-nginx
+
+
+#### Setting UP Ingress for Kubernetes dashboard 
+
+https://aquasec.com/cloud-native-academy/kubernetes-101/kubernetes-dashboard/
+
+### How to see the dashboard 
+
+32. kubectl proxy 
+
+Open Chrome - http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
+### Creating Admin Username
+
+https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
+Creating admin-user.yaml file as per above docker
+
+>kubectl apply -f dashboard-adminuser.yaml
+
+>kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+
+#### You will not be able to create the token
+https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengstartingk8sdashboard.htm
+
+Create admin-user-sa-token.yaml
+
+> kubectl apply -f admin-user-sa-token.yaml
+> kubectl get secret -n kubernetes-dashboard
+
+#### Get Admin-User Token for kubernetes Dashboard 
+
+33. kubectl describe secrets admin-user-token-d4jzk -n kubernetes-dashboard
+
+#### Setting up Ingress
+
+>kubectl apply -f dashboard-ingress.yaml
+>kubectl get ingress -n kubernetes-dashboard
+
+### Watch to get the IP address of ingress
+34. kubectl get ingress -n kubernetes-dashboard --watch
+
+### Describe Ingress
+35. kubectl describe ingress dashboard-ingress -n kubernetes-dashboard
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
