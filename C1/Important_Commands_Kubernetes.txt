@@ -182,6 +182,9 @@ If it is not in above ns
 
 https://aquasec.com/cloud-native-academy/kubernetes-101/kubernetes-dashboard/
 
+### Get Kubernetes-dashboard.yaml 
+>kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.3.1/aio/deploy/recommended.yaml
+
 ### How to see the dashboard 
 
 32. kubectl proxy 
@@ -195,8 +198,6 @@ https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/cre
 Creating admin-user.yaml file as per above docker
 
 >kubectl apply -f dashboard-adminuser.yaml
-
->kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
 
 #### You will not be able to create the token
 https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengstartingk8sdashboard.htm
@@ -221,6 +222,27 @@ Create admin-user-sa-token.yaml
 ### Describe Ingress
 35. kubectl describe ingress dashboard-ingress -n kubernetes-dashboard
 
+- Ingress Controllers: https://bit.ly/32dfHe3
+- Ingress Controller Bare Metal: https://bit.ly/3kYdmLB
+
+### HELM 
+
+- Helm hub: https://hub.helm.sh/
+- Helm charts GitHub Project: https://github.com/helm/charts
+- Install Helm: https://helm.sh/docs/intro/install/
+
+36. helm search <keyword>
+  
+37. helm install <chartname>  
+
+### Over writting values.yaml of chart with your own my-values.yaml 
+38. helm install --values=my-values.yaml <chartname>
+
+39. helm upgrade <chartname>
+
+### If any of the revision goes wrong in HELM Chart .We can use ROLLBACK 
+
+40. helm rollback <chartname>
 
 
 
