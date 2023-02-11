@@ -24,6 +24,9 @@ To get the version of kubernetes . It will tell what is client veresion and serv
 1. kubectl get nodes #It will show one node which is a minikube cluster 
 
 2. Kubectl get pod
+### To get YAML file of POD
+> kubectl get pod hello -o yaml > pod-spec.yaml
+
 
 3. kubectl get services #It will show only one default service 
 
@@ -243,6 +246,8 @@ Create admin-user-sa-token.yaml
 ### If any of the revision goes wrong in HELM Chart .We can use ROLLBACK 
 
 40. helm rollback <chartname>
+
+
 
 
 
