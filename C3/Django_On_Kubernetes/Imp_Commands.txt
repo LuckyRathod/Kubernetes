@@ -53,9 +53,31 @@ Now we will run appication in another cmd
 from django.conf import settings
 print(settings.DB_IS_AVAIL)
 
+### Build and Push Docker Container to Digital Ocean Container Registry 
+
+> docker build -t registry.digitalocean.com/container-registry-lucky/django-k8s:latest -f DockerFile .\
+> docker push registry.digitalocean.com/container-registry-lucky/django-k8s --all-tags
+
+### Creating password for DJANGO_SUPERUSER
+
+> python -c "import secrets;print(secrets.token_urlsafe(32))"
+
+### Creating Django-Secret-key 
+
+> python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 
 
+### Kubernets Secrets from .ENV.PROD or .ENV 
 
- 
+> kubectl create secret generic django-k8s-web-prod-env --from-env-file=.env.prod
+
+### Build and Push Docker Container Again to Digital Ocean Container Registry because kubernetes cluster and image name are same
+
+> docker build -t registry.digitalocean.com/container-registry-lucky/django-k8s-web:latest -f DockerFile .
+> docker push registry.digitalocean.com/container-registry-lucky/django-k8s-web --all-tags
 
 
+### Going inside one of pod and activating env
+
+> kubectl exec -it django-k8s-web-deployment-6f466549-gkmxw -- /bin/bash
+root@django-k8s-web-deployment-6f466549-gkmxw:/app# source /opt/venv/bin/activate 
