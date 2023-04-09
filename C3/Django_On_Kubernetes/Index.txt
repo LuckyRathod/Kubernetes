@@ -1,0 +1,31 @@
+00:00:00  Welcome to Django & Kubernetes
+00:02:08  Requirements & Recommendations
+00:07:12  Install Kubernetes Command Line Tool Kubectl on macOS
+00:12:49  Install Kubernetes Command Line Tool Kubectl on Windows
+00:19:08  Create the Python Virtual Environment
+00:24:28  Install Requirements & Start Django Project
+00:33:01  Environment Variables with a dotenv file
+00:36:10  Setup django dotenv to read our dotenv file
+00:41:54  Update Django settings for Database & Environment Variables
+00:47:29  Docker, Dockerfile & dockerignore
+01:01:13  Create a migration script
+01:09:46  Docker Compose Part 1
+01:32:48  Docker Compose Part 2
+01:41:43  Provision Kubernetes on DigitalOcean
+01:55:20  Connect to Kubernetes with kubectl & kubeconfig
+02:03:41  Deploy your First Container on Kubernetes
+02:14:00   Expose your Deployment with a Load Balancer
+02:26:11  Deploy a Minimal FastAPI App
+02:34:24  DigitalOcean Container Registry
+02:38:36  Build & Push Docker Container to DO Container Registry
+02:45:08  Managed PostgreSQL Database
+02:52:44  Kubernetes Secrets from env
+02:57:17  Django Deployment & Service
+03:11:21  Full Deployment & Fix Errors
+03:24:55  Deployment Guide
+03:38:57  Github Actions  Test Django Automatically
+03:55:31  Github Actions   Build & Push Docker Container to DigitalOcean
+04:11:09  Github Actions   Django Deployment on Kubernetes
+04:29:01  Django Static Files on DigitalOcean Spaces
+04:54:28  New Django App, Models, & Tests
+05:10:55  Thank you
